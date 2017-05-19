@@ -14,6 +14,14 @@ $(function(){
     countdown(year,month,day,hour,minute);
 });
 
+heroImages = 5;
+curImageNum = 0;
+
+$('body').click(function(){
+  curImageNum += 1;
+  curImageNum = curImageNum % 5;
+  $('body').css('background-image', 'url(images/hero_bg'+curImageNum+'.jpg)');
+});
 
 
 /*------ Messy Countdown Code ------*/
@@ -21,7 +29,7 @@ var montharray=new Array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","
 
 function countdown(yr,m,d,hr,min){
     theyear=yr;themonth=m;theday=d;thehour=hr;theminute=min;
-    
+
     var today=new Date();
     var todayy=today.getYear();
     if (todayy < 1000) {
