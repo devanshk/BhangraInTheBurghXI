@@ -20,7 +20,7 @@ curImageNum = 0;
 $('body').click(function(){
   curImageNum += 1;
   curImageNum = curImageNum % 5;
-  $('body').css('background-image', 'url(images/hero_bg'+curImageNum+'.jpg)');
+  $('body').css('background-image', 'url(images/hero_bg'+(curImageNum+1)+'.jpg)');
 });
 
 
