@@ -27,19 +27,24 @@
   src: url("./fonts/Proxima Nova Black.otf");
 }
 
-
-
-body{
-    background-image:url(../images/hero_bg5.jpg);
+#hero_bg{
+    background-image:url(../images/hero_bg1.jpg);
     background-position: center;
     background-size: cover;
-    font-family: 'Proxima Nova';
-}
-
-.whitewash{
+    
+    transition: 0.5s all ease;
+    
     width: 100vw;
     height: 100vh;
-    background-color: rgba(20,0,0,0.8);
+    position:fixed;
+    
+    filter: saturate(0) blur(0.5px);
+}
+
+.wash{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255,255,255,0.8);
     position:fixed;
     top:0;
     left:0;
@@ -52,26 +57,25 @@ body{
 #hero .large-0{
     position:absolute;
     top:50%;
-    transform:translateY(-50%);
+    transform: translateY(-50%);
 }
 #hero #countdown_wrapper{
-    border: solid 1px rgba(255,255,255,0.4);
+/*    border: solid 1px rgba(245, 31, 31, 058);*/
     padding: 1vh 0;
+    background: rgba(245, 31, 31, 0.8);
+    box-shadow: 0px 0px 50px rgba(255,0,0,0.3);
 }
 #countdown_wrapper ul{
     list-style: none;
     display:flex;
     justify-content:space-around;
     text-align: center;
-    color:white;
+    color: white;
 }
 #countdown_wrapper .vert_line{
     width: 1px;
     margin-top:20px;
-    background-color:rgba(255,255,255,0.3);
-}
-#countdown_wrapper li{
-    width: 20%;
+    background-color: white;
 }
 #countdown_wrapper h1{
     font-family: 'Proxima Nova Semibold';
@@ -80,7 +84,7 @@ body{
     margin-top:4vh;
 }
 #countdown_wrapper h3{
-    font-family: 'Proxima Nova Thin';
+    font-family: 'Proxima Nova Light';
     text-transform: uppercase;
     font-size:1.4vw;
 }

@@ -14,18 +14,35 @@ $(function(){
     countdown(year,month,day,hour,minute);
 });
 
-heroImages = 5;
+// <- When you click the background, have it change ->
+
+// The number of images we have, named as
+// hero_bg<number>.jpg and 1-indexed
+heroImages = 7;
 curImageNum = 0;
 
-$('body').click(function(){
-  curImageNum += 1;
-  curImageNum = curImageNum % 5;
-  $('body').css('background-image', 'url(images/hero_bg'+(curImageNum+1)+'.jpg)');
+$('html').click(function(){
+    curImageNum += 1;
+    curImageNum = curImageNum % heroImages;
+    
+    imageName = 'images/hero_bg'+(curImageNum+1)+'.jpg'
+    
+    $('body').css('background-image', 'url('+imageName+')');
+    
+    $('#hero_bg').css('background-image', 'url('+imageName+')');
 });
 
 
 /*------ Messy Countdown Code ------*/
 var montharray=new Array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
+
+// Adds a leading 0 if the number is single-digit
+function fix(num){
+//    if (num < 10){
+//        return '0' + num;
+//    }
+    return num;
+}
 
 function countdown(yr,m,d,hr,min){
     theyear=yr;themonth=m;theday=d;thehour=hr;theminute=min;
@@ -50,20 +67,20 @@ function countdown(yr,m,d,hr,min){
     var dmin=Math.floor(((dd%(60*60*1000*24))%(60*60*1000))/(60*1000)*1);
     var dsec=Math.floor((((dd%(60*60*1000*24))%(60*60*1000))%(60*1000))/1000*1);
 
-if(dday<=0&&dhour<=0&&dmin<=0&&dsec<=0){ //If we've already passed the event time, zero everything out instead of going negative
-    //Also our base case
-    $("#days").html(0);
-    $("#hours").html(0);
-    $("#minutes").html(0);
-    $("#seconds").html(0);
-    return;
-}
-else {
-    $("#days").html(dday);
-    $("#hours").html(dhour);
-    $("#minutes").html(dmin);
-    $("#seconds").html(dsec);
-    //Run the countdown function again. Recursion ftw.
-    setTimeout("countdown(theyear,themonth,theday,thehour,theminute)",1000);
+    if(dday<=0&&dhour<=0&&dmin<=0&&dsec<=0){ //If we've already passed the event time, zero everything out instead of going negative
+        //Also our base case
+        $("#days").html(0);
+        $("#hours").html(0);
+        $("#minutes").html(0);
+        $("#seconds").html(0);
+        return;
+    }
+    else {
+        $("#days").html(fix(dday));
+        $("#hours").html(fix(dhour));
+        $("#minutes").html(fix(dhour));
+        $("#seconds").html(fix(dsec));
+        //Run the countdown function again. Recursion ftw.
+        setTimeout("countdown(theyear,themonth,theday,thehour,theminute)",1000);
     }
 }
